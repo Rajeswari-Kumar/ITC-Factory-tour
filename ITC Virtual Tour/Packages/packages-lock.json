@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "com.lmnt.unity": {
-      "version": "file:com.lmnt.unity",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.simonoliver.unityfigma": {
       "version": "https://github.com/simonoliver/UnityFigmaBridge.git",
       "depth": 0,

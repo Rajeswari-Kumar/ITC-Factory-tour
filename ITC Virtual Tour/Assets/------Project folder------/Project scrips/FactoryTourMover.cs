@@ -1,35 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 
 public class FactoryTourMover : MonoBehaviour
 {
     public Transform Point1;
     
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public Camera Camera1;
+    public XROrigin Player;
+    public Transform BirdEyeViewEndPoint;
     public void MoveTo(Transform point)
     {
         transform.position = point.position;
     }
 
-    //public void AnimNameChange(string name)
-    //{
-    //    var animControllers = FindObjectsOfType<AnimationTriggerControllerScript>();
-    //    foreach (var controller in animControllers)
-    //    {
-    //        controller.animName = name;
-    //        Debug.Log(controller.animName);
-    //    }
-    //}
-
+    //Bird eye view to 5 seconds
+    public void BirdEyeView()
+    {
+        Player.Camera = Camera1;
+        Camera1.transform.Translate(BirdEyeViewEndPoint.position,Space.World);
+    }
+ 
 }
