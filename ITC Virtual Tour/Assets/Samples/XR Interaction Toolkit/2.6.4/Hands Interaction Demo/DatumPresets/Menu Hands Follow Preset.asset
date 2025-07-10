@@ -23,7 +23,7 @@ MonoBehaviour:
     invertAxisForRightHand: 0
     requirePalmFacingUser: 1
     palmFacingUserDegreeAngleThreshold: 95.74
-    requirePalmFacingUp: 1
+    requirePalmFacingUp: 0
     palmFacingUpDegreeAngleThreshold: 95.74
     snapToGaze: 1
     snapToGazeAngleThreshold: 49.46

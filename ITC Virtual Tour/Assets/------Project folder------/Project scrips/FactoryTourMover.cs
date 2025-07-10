@@ -1,25 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class FactoryTourMover : MonoBehaviour
+public class BirdEyeViewSimple : MonoBehaviour
 {
-    public Transform Point1;
+    public Toggle toggle;
+    public Camera camera;
+    public XROrigin xrOrigin;
+
     
-    public Camera Camera1;
-    public XROrigin Player;
-    public Transform BirdEyeViewEndPoint;
-    public void MoveTo(Transform point)
+
+
+    private void Start()
     {
-        transform.position = point.position;
+        if (toggle != null)
+            toggle.onValueChanged.AddListener(OnToggleChanged);
     }
 
-    //Bird eye view to 5 seconds
-    public void BirdEyeView()
+    private void OnDestroy()
     {
-        Player.Camera = Camera1;
-        Camera1.transform.Translate(BirdEyeViewEndPoint.position,Space.World);
+        if (toggle != null)
+            toggle.onValueChanged.RemoveListener(OnToggleChanged);
     }
- 
+
+    private void OnToggleChanged(bool isOn)
+    {
+        if (isOn)
+        {
+            StartCoroutine(BirdEyeViewFunc());
+        }
+        else
+        {
+         
+        }
+    }
+
+    IEnumerator BirdEyeViewFunc()
+    {
+        camera.gameObject.SetActive(true);
+        xrOrigin.Camera = camera;
+        yield return new WaitForSeconds(7f);
+        camera.gameObject.SetActive(false);
+        xrOrigin.Camera = Camera.main;
+    }
+
 }
